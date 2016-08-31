@@ -1,0 +1,9 @@
+= simple_form_for(@card_sort_result) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :card_sort_id
+    = f.input :result
+
+  .form-actions
+    = f.button :submit

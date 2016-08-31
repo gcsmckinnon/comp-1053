@@ -1,0 +1,1 @@
+json.partial! "card_sort_results/card_sort_result", card_sort_result: @card_sort_result

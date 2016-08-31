@@ -1,0 +1,15 @@
+= simple_form_for(@card_sort_candidate) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :age
+
+    - if f.object.describing_tags && f.object.describing_tags.count > 0
+      = f.input :describing_tags, as: :text, input_html: { value: f.object.describing_tags.join( "\r\n" ) }
+    - else
+      = f.input :describing_tags, as: :text, label: 'Describing Tags: Separate tags by entering them on new lines'
+
+  .form-actions
+    = f.button :submit

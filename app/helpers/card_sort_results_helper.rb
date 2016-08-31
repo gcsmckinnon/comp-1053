@@ -1,0 +1,2 @@
+module CardSortResultsHelper
+end

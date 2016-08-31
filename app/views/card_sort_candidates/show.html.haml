@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @card_sort_candidate.first_name
+%p
+  %b Last name:
+  = @card_sort_candidate.last_name
+%p
+  %b Age:
+  = @card_sort_candidate.age
+%p
+  %b Describing tags:
+  = @card_sort_candidate.describing_tags
+
+= link_to 'Edit', edit_card_sort_candidate_path(@card_sort_candidate)
+\|
+= link_to 'Back', card_sort_candidates_path

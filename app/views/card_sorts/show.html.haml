@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @card_sort.name
+%p
+  %b Description:
+  = @card_sort.description
+%p
+  %b Code:
+  = @card_sort.code
+
+= link_to 'Edit', edit_card_sort_path(@card_sort)
+\|
+= link_to 'Back', card_sorts_path

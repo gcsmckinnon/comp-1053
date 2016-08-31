@@ -1,0 +1,1 @@
+json.array! @card_sort_results, partial: 'card_sort_results/card_sort_result', as: :card_sort_result

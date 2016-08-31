@@ -1,0 +1,19 @@
+%h1 Listing Card Sorts
+
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Code
+      %th
+      %th
+
+  %tbody
+    - @card_sorts.each do |card_sort|
+      %tr
+        %td= card_sort.name
+        %td= card_sort.description
+        %td= card_sort.code
+        %td= link_to 'Edit', edit_card_sort_path(card_sort)
+        %td= link_to 'Destroy', card_sort, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Card sort:
+  = @card_sort_result.card_sort_id
+%p
+  %b Result:
+  = @card_sort_result.result
+
+= link_to 'Edit', edit_card_sort_result_path(@card_sort_result)
+\|
+= link_to 'Back', card_sort_results_path

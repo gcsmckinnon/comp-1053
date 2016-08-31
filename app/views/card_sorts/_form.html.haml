@@ -1,0 +1,24 @@
+= simple_form_for(@card_sort) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    - random_string = SecureRandom.hex
+    = f.input :code, as: :hidden, input_html: { value: random_string }
+    = f.association :author, label_method: :full_name, prompt: "Choose an Author"
+    
+    - if f.object.cards && f.object.cards.count > 0
+      %label Card Labels
+      - f.object.cards.each do |card|
+        = f.input :cards, as: :string, input_html: { name: 'card_sort[cards][]', class: 'card', value: card["label"] }, label: false
+    - else
+      = f.input :cards, as: :string, input_html: { name: 'card_sort[cards][]', class: 'card', placeholder: 'example: Tomatoes' }, label: 'Add a Card'
+
+  .form-group
+    %button.addCard.btn.btn-success{ type: 'button' }
+      %i.fa.fa-plus &nbsp;
+      Add Card
+
+  .form-actions
+    = f.button :submit

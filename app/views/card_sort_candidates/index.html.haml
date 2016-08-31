@@ -1,0 +1,21 @@
+%h1 Listing Candidates
+
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th First Name
+      %th Last Name
+      %th Age
+      %th Describing Tags
+      %th
+      %th
+
+  %tbody
+    - @card_sort_candidates.each do |card_sort_candidate|
+      %tr
+        %td= card_sort_candidate.first_name
+        %td= card_sort_candidate.last_name
+        %td= card_sort_candidate.age
+        %td= card_sort_candidate.describing_tags
+        %td= link_to 'Edit', edit_card_sort_candidate_path(card_sort_candidate)
+        %td= link_to 'Destroy', card_sort_candidate, :method => :delete, :data => { :confirm => 'Are you sure?' }
