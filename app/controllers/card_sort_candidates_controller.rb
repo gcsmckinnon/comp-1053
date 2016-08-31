@@ -25,9 +25,9 @@ class CardSortCandidatesController < ApplicationController
   # POST /card_sort_candidates.json
   def create
     @card_sort_candidate = CardSortCandidate.new do |u|
-      u.first_name = card_sort_candidate_params['first_name'],
-      u.last_name = card_sort_candidate_params['last_name'],
-      u.age = card_sort_candidate_params['age'],
+      u.first_name = card_sort_candidate_params['first_name']
+      u.last_name = card_sort_candidate_params['last_name']
+      u.age = card_sort_candidate_params['age']
       u.describing_tags = card_sort_candidate_params['describing_tags'].split( /\r?\n/ )
     end
 
