@@ -10,7 +10,7 @@ $( document).on( 'turbolinks:load', function () {
     });
   }
 
-  if ( top.location.pathname.match( /\/card_sorts\/.+/i ) ) {
+  if ( top.location.pathname.match( /\/card_sorts\/\d+/i ) ) {
 
     var options = {};
     options.cards = $( '#cardsortContainer' ).data( 'cards' );
