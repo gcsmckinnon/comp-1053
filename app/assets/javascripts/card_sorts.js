@@ -33,7 +33,7 @@ $( document).on( 'turbolinks:load', function () {
       var results = cardsort.getResults();
       $( '#result' ).val( JSON.stringify( results ) );
       
-      // $( 'form' ).submit();
+      $( 'form' ).submit();
     });
 
     // get the card template
