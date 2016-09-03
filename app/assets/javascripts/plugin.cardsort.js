@@ -1,5 +1,7 @@
 function CardSort ( options ) {
 
+  console.log('init');
+
   this.options = options || {};
 
   /* initialize */

@@ -12,17 +12,20 @@ $( document).on( 'turbolinks:load', function () {
 
   if ( top.location.pathname.match( /\/card_sorts\/\d+/i ) ) {
 
+    console.log( "hey" );
+
     var options = {};
-    options.cards = $( '#cardsortContainer' ).data( 'cards' );
+    options.cardList = JSON.stringify( $( '#cardsortContainer' ).data( 'cards' ) );
+    options.cardSortContainerSelector = '#cardsortContainer';
     
     // setup the card sort
-    var cardsort = new CardSortV2( options );
+    var cardsort = new CardSort( options );
 
     // create the addgroup functionality
-    $( '#addGroup' ).click( function () {
-      console.log( 'addGroup clicked' );
-      cardsort.addHTMLGroupToGroupContainer();
-    });
+    // $( '#addGroup' ).click( function () {
+    //   console.log( 'addGroup clicked' );
+    //   cardsort.addHTMLGroupToGroupContainer();
+    // });
 
     $( 'input[name=commit]' ).on( 'click', function ( e ) {
       e.preventDefault();
@@ -30,7 +33,7 @@ $( document).on( 'turbolinks:load', function () {
       var results = cardsort.getResults();
       $( '#result' ).val( JSON.stringify( results ) );
       
-      $( 'form' ).submit();
+      // $( 'form' ).submit();
     });
 
     // get the card template

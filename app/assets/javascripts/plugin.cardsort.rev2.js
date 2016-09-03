@@ -218,7 +218,7 @@ CardSortV2.prototype.addHTMLGroupToGroupContainer = function () {
     group.append( groupLabel );
     group.append( groupItems );
 
-    this.addDraggableToGroup( group );
+    // this.addDraggableToGroup( group ); removed for now
     this.addDroppableToGroup( group );
 
     this.groupContainer.append( group );
@@ -294,7 +294,22 @@ CardSortV2.prototype.addDraggableToGroup = function ( group ) {
     stack: ".group"
   });
 
-}
+};
+
+CardSortV2.prototype.getResults = function () {
+
+  var cardsort = this;
+  var rows = [];
+  var groups = this.groupContainer.find( '.group' );
+
+  $( groups ).each( function () {
+
+  });
+
+  function walkIt ( ele ) {
+  }
+
+};
 
 
 
