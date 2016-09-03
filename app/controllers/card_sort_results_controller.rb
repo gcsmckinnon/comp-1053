@@ -24,7 +24,17 @@ class CardSortResultsController < ApplicationController
   # POST /card_sort_results
   # POST /card_sort_results.json
   def create
-    @card_sort_result = CardSortResult.new(card_sort_result_params)
+    # @card_sort_result = CardSortResult.new(card_sort_result_params)
+
+    results = JSON.parse card_sort_result_params['result']
+    card_sort_id = card_sort_result_params['card_sort_id']
+    card_sort_candidates = card_sort_result_params['card_sort_candidates']
+
+    @card_sort_result = CardSortResult.new do |csr|
+      csr.card_sort_id = card_sort_id
+      csr.card_sort_candidates = card_sort_candidates
+      csr.result = results
+    end
 
     respond_to do |format|
       if @card_sort_result.save
@@ -69,6 +79,6 @@ class CardSortResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_sort_result_params
-      params.require(:card_sort_result).permit(:card_sort_id_id, :result)
+      params.require( :card_sort_result ).permit( :card_sort_id, { card_sort_candidates: [] }, :result  )
     end
 end

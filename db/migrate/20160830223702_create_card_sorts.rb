@@ -4,7 +4,7 @@ class CreateCardSorts < ActiveRecord::Migration[5.0]
       t.string :name
       t.text :description
       t.string :code
-      t.references :author
+      t.jsonb :cards
 
       t.timestamps
     end

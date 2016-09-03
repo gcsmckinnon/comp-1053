@@ -11,7 +11,7 @@
   %tbody
     - @card_sort_results.each do |card_sort_result|
       %tr
-        %td= card_sort_result.card_sort_id
+        %td= card_sort_result.card_sort.name
         %td= card_sort_result.result
         %td= link_to 'Edit', edit_card_sort_result_path(card_sort_result)
         %td= link_to 'Destroy', card_sort_result, :method => :delete, :data => { :confirm => 'Are you sure?' }

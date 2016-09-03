@@ -6,7 +6,7 @@
     = f.input :description
     - random_string = SecureRandom.hex
     = f.input :code, as: :hidden, input_html: { value: random_string }
-    = f.association :author, label_method: :full_name, prompt: "Choose an Author"
+    = f.input :code_display, input_html: { value: random_string, disabled: :true }
     
     - if f.object.cards && f.object.cards.count > 0
       %label Card Labels

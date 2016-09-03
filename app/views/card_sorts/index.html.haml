@@ -12,7 +12,8 @@
   %tbody
     - @card_sorts.each do |card_sort|
       %tr
-        %td= card_sort.name
+        %td
+          = link_to card_sort.name, card_sort
         %td= card_sort.description
         %td= card_sort.code
         %td= link_to 'Edit', edit_card_sort_path(card_sort)

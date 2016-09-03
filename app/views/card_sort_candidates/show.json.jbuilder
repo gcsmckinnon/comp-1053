@@ -1,1 +1,0 @@
-json.partial! "card_sort_candidates/card_sort_candidate", card_sort_candidate: @card_sort_candidate

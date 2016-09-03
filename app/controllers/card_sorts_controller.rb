@@ -10,6 +10,7 @@ class CardSortsController < ApplicationController
   # GET /card_sorts/1
   # GET /card_sorts/1.json
   def show
+    @card_sort_result = CardSortResult.new
   end
 
   # GET /card_sorts/new
@@ -28,7 +29,6 @@ class CardSortsController < ApplicationController
       csp.name = card_sort_params['name']
       csp.description = card_sort_params['description']
       csp.code = card_sort_params['code']
-      csp.author_id = card_sort_params['author_id']
       csp.cards = card_sort_params['cards'].map do |card|
         {label: card}
       end
@@ -52,7 +52,6 @@ class CardSortsController < ApplicationController
       if @card_sort.update(
         name: card_sort_params['name'],
         description: card_sort_params['description'],
-        author_id: card_sort_params['author_id'],
         cards: card_sort_params['cards'].map{ |card| {label: card} },
       )
         format.html { redirect_to @card_sort, notice: 'Card sort was successfully updated.' }

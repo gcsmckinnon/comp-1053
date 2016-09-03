@@ -1,15 +1,31 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%h1.page-header
   = @card_sort.name
-%p
-  %b Description:
-  = @card_sort.description
-%p
-  %b Code:
-  = @card_sort.code
+  %small
+    &nbsp;&mdash;&nbsp;
+    A Card Sort Study
 
-= link_to 'Edit', edit_card_sort_path(@card_sort)
-\|
-= link_to 'Back', card_sorts_path
+= simple_form_for @card_sort_result do |f|
+  %p
+    %a{ data: { toggle: 'collapse' }, href: '#candidateDetails', aria: { expanded: :false, controls: 'candidateDetails' } } Candidate Details
+  #candidateDetails.collapse
+    .allCandidates
+      - if f.object.card_sort_candidates && f.object.card_sort_candidates.count > 0
+        %label Candidates
+        - f.object.card_sort_candidates.each do |card|
+          = f.input :card_sort_candidates, as: :string, input_html: { name: 'card_sort_result[card_sort_candidates][]', class: 'candidate' }, label: false
+      - else
+        = f.input :card_sort_candidates, as: :string, input_html: { name: 'card_sort_result[card_sort_candidates][]', class: 'candidate' }, label: 'Candidates'
+    .form-group
+      %button.addCandidate.btn.btn-success{ type: 'button' }
+        %i.fa.fa-plus &nbsp;
+        Add Candidate
+
+  = f.input :card_sort_id, as: :hidden, input_html: { value: @card_sort.id }
+  = f.input :result, as: :hidden, input_html: { id: 'result' }
+  .form-group
+    = f.button :submit, class: 'btn-danger'
+    
+.actions
+  %button#addGroup.btn.btn-success{ type: 'button' }
+    Add Group
+#cardsortContainer{ data: { cards: @card_sort.cards.to_json } }
