@@ -32,7 +32,8 @@
       padding: 1em;
       background-color: #fff;
       display: inline-block;
-      height: auto;
+      height: 100% !important;
+      width: 100% !important;
 
       .drag {
         display: inline-block;

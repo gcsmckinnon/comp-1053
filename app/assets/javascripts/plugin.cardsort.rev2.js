@@ -48,7 +48,9 @@ CardSortV2.prototype.createCardContainer = function () {
           top: 0,
           bottom: 0,
           left: 0,
-          right: 0
+          right: 0,
+          heigth: 'auto !important',
+          width: 'auto !important'
         });
       }
     });
@@ -79,7 +81,9 @@ CardSortV2.prototype.createGroupContainer = function () {
           top: 0,
           bottom: 0,
           left: 0,
-          right: 0
+          right: 0,
+          heigth: '100% !important',
+          width: '100% !important'
         });
       }
     });
@@ -269,13 +273,13 @@ CardSortV2.prototype.addDroppableToGroup = function ( group ) {
         bottom: 0,
         left: 0,
         right: 0,
-        height: 'auto',
-        width: 'auto'
+        height: '100% !important',
+        width: '100% !important'
       });
 
       $( this ).css({
-        'height': 'auto',
-        'width': 'auto'
+        'height': '100% !important',
+        'width': '100% !important'
       });
     }
   });
