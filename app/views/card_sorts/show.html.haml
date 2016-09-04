@@ -1,4 +1,4 @@
-%h1.page-header
+%h1
   = @card_sort.name
   %small
     &nbsp;&mdash;&nbsp;
@@ -6,7 +6,11 @@
 
 = simple_form_for @card_sort_result do |f|
   %p
-    %a{ data: { toggle: 'collapse' }, href: '#candidateDetails', aria: { expanded: :false, controls: 'candidateDetails' } } Candidate Details
+    %a{ data: { toggle: 'collapse' }, href: '#candidateDetails', aria: { expanded: :false, controls: 'candidateDetails' } }
+      Candidate Details
+      &nbsp;
+      %i.fa.fa-caret-right
+
   #candidateDetails.collapse
     .allCandidates
       - if f.object.card_sort_candidates && f.object.card_sort_candidates.count > 0
@@ -23,9 +27,21 @@
   = f.input :card_sort_id, as: :hidden, input_html: { value: @card_sort.id }
   = f.input :result, as: :hidden, input_html: { id: 'result' }
   .form-group
-    = f.button :submit, class: 'btn-danger'
-    
-/ .actions
-/   %button#addGroup.btn.btn-success{ type: 'button' }
-/     Add Group
-#cardsortContainer{ data: { cards: @card_sort.cards.to_json } }
+    = f.button :submit, class: 'btn-danger', disabled: true, id: 'create-card-sort'
+
+.actions.btn-group
+  %button#addGroup.btn.btn-default{ type: 'button' } Add Group
+
+#cardSortContainer
+  
+  #cardContainer
+    - @card_sort.cards.each do |card|
+      .card
+        %p.label= card["label"]
+
+  #groupContainer
+    .group
+      .label{ contentEditable: true }
+        Click here to edit title
+
+      .items

@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
+//= require plugin.cardsort
+//= require card_sorts
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
