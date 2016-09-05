@@ -32,8 +32,9 @@
 .actions.btn-group
   %button#addGroup.btn.btn-default{ type: 'button' } Add Group
 
+.notification.alert-info
+  %p Drag cards to the group, or back again if need be
 #cardSortContainer
-  
   #cardContainer
     - @card_sort.cards.each do |card|
       .card

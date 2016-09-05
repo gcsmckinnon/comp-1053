@@ -14,24 +14,34 @@ class @CardSort
     @addDroppable()    
 
   addDraggable: ->
-    @cards.draggable()
+    @cards.draggable
+      helper: 'clone'
+      revert: 'invalid'
+      appendTo: '#cardContainer'
     return
 
+  checkCardContainerStock: ->
+    if @cardContainer.find('.card').length == 1
+      console.log "empty"
+      $('#create-card-sort').prop('disabled', false)
+    else
+      console.log "not yet: ", @cardContainer.find('.card').length
+
   addDroppable: ->
-    cardContainer = @cardContainer
+    @cardContainer.droppable
+      drop: (event, ui) ->
+        ui.draggable.appendTo this
+      greedy: true
+      tolerance: "pointer"
 
     if @groupContainer.find('.group').find('.items').data 'droppable'
       @groupContainer.find('.group').find('.items').droppable 'destroy'
 
     @groupContainer.find('.group').find('.items').droppable
-      drop: (event, ui) ->
-        ui.draggable.appendTo this
-        
-        if cardContainer.find('.card').length == 0
-          console.log "empty"
-          $('#create-card-sort').prop('disabled', false)
-        else
-          console.log "not yet: ", cardContainer.find('.card').length
+      drop: (event, ui) =>
+        ui.draggable.appendTo event.target
+
+        @checkCardContainerStock()
 
         return
       greedy: true

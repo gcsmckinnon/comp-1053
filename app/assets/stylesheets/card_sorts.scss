@@ -1,66 +1,92 @@
+html, body, .container {
+  height: 100%;
+  width: 100%;
+}
+
 #cardSortContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
 
-  .card { // global
-    border-radius: 0.25em;
-    margin: 0.5em;
-    display: inline-block;
-
-    .label {
-      background-color: #333;
-      color: #fff;
-      padding: 0.75em;
-      font-size: 0.75em;
-      font-weight: normal;
-      letter-spacing: 0.05em;
-    }
+  .label { // override Bootstrap Defaults
+    display: inherit;
+    padding: 0;
+    font-size: 100%;
+    font-weight: normal;
+    line-height: normal;
+    color: inherit;
+    text-align: inherit;
+    white-space: inherit;
+    vertical-align: inherit;
+    border-radius: 0;
   }
 
   #cardContainer {
-    width: 50%;
-    display: inline-block;
-    padding: 1em;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
   }
 
   #groupContainer {
-    width: 50%;
-    display: inline-block;
+    display: flex;
+    padding: 0 1em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
   }
 
-  .group { // global
-    width: 50%;
+  .card {
+    height: 100px;
+    width: 150px;
+    padding: 1em;
+    overflow: hidden;
+    display: table;
     border: 1px solid #333;
-    border-radius: 0.25em;
-    display: inline-block;
+    border-radius: 5px;
+    margin: 1em;
+    background-color: #fff;
 
     .label {
-      width: 100%;
-      display: block;
-      color: #333;
-      padding: 1em;
-      border-bottom: 1px solid #333;
-      border-radius: 0;
+      display: table-cell;
       text-align: center;
+      vertical-align: middle;
     }
+  }
+
+  .group {
+    min-width: 200px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin: 0 0.5em;
+    margin-bottom: 1em;
 
     .items {
-      height: 10em;
+      min-height: 200px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
 
-      .card {
-        left: 0 !important;
-        top: 0 !important;
-        margin: 0.5em;
-        display: inline-block;
-      }
-
-      .label {
-        border-radius: 0.25em;
-        background-color: #333;
-        color: #fff;
-        padding: 0.75em;
-        font-size: 0.75em;
-        font-weight: normal;
-        letter-spacing: 0.05em;
+      .card, .group {
+        // left: 0 !important;
+        // top: 0 !important;
       }
     }
+  }
+  .group > .label {
+    text-align: center;
+    border-bottom: 1px solid #333;
+    width: 100%;
+    padding: 1em;
+    font-size: 1.25em;
+    font-weight: bold;
   }
 }
