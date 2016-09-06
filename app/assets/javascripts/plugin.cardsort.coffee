@@ -11,7 +11,8 @@ class @CardSort
 
   init: ->
     @addDraggable()
-    @addDroppable()    
+    @addDroppable()
+    @addNesting()
 
   addDraggable: ->
     @cards.draggable
@@ -19,6 +20,16 @@ class @CardSort
       revert: 'invalid'
       appendTo: '#cardContainer'
     return
+
+  addNesting: ->
+    if @groupContainer.find('.group').data 'draggable'
+      @groupContainer.find('.group').draggable 'destroy'
+
+    @groupContainer.find('.group').draggable
+      handle: 'i'
+      helper: 'clone'
+      revert: 'invalid'
+      appendTo: '#groupContainer'
 
   checkCardContainerStock: ->
     if @cardContainer.find('.card').length == 1
@@ -29,6 +40,14 @@ class @CardSort
 
   addDroppable: ->
     @cardContainer.droppable
+      accept: '.card'
+      drop: (event, ui) ->
+        ui.draggable.appendTo this
+      greedy: true
+      tolerance: "pointer"
+
+    @groupContainer.droppable
+      accept: '.group'
       drop: (event, ui) ->
         ui.draggable.appendTo this
       greedy: true
@@ -50,14 +69,15 @@ class @CardSort
 
   addGroup: ->
     group = $('<div >', {'class': 'group'})
-    label = $('<div >', {'class': 'label'}).text 'Click here to edit title'
+    label = $('<div >', {'class': 'label'}).append('<i class="fa fa-arrows ui-draggable-handle">&nbsp;</i><span contentEditable>Click here to edit title</span>')
     items = $('<div >', {'class': 'items'})
     group.append label
     group.append items
     @groupContainer.append group
     @addDroppable();
+    @addNesting()
 
-  getResults: ->
+  getOldResults: ->
     rows = []
     groups = @groupContainer.find('.group')
     $(groups).each ->
@@ -72,6 +92,52 @@ class @CardSort
         cards: groupCards
       return
     rows
+
+  getResults: ->
+    return @walkit @groupContainer
+
+
+  walkit: (item, tree)=>
+    self = this
+    children = $(item).children()
+    tree = tree || {}
+
+    $(children).each ->
+      if $(this).hasClass('group')
+        label = $(this).children('.label').text()
+        tree[label] = self.walkit $(this).children('.items'), tree[label]
+      else
+        tree['cards'] = tree['cards'] || []
+        tree['cards'].push $(this).children('.label').text()
+
+    return tree
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

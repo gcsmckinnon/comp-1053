@@ -19,7 +19,9 @@ $(document).on 'turbolinks:load', ->
     $('input[name=commit]').on 'click', (e) ->
       e.preventDefault()
       results = cardsort.getResults()
+      console.log results
       $('#result').val JSON.stringify(results)
+      console.log $('#result').val()
       $('form').submit()
       return
 
