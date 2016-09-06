@@ -59,7 +59,7 @@ class @CardSort
     @groupContainer.find('.group').find('.items').droppable
       accept: "*"
       drop: (event, ui) =>
-        ui.draggable.appendTo event.target
+        ui.draggable.prependTo event.target
         @checkCardContainerStock()
         return
       greedy: true
