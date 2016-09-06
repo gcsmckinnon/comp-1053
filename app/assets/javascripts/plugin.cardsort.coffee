@@ -26,7 +26,7 @@ class @CardSort
       @groupContainer.find('.group').draggable 'destroy'
 
     @groupContainer.find('.group').draggable
-      handle: 'i'
+      handle: 'i.fa.fa-arrows'
       helper: 'clone'
       revert: 'invalid'
       appendTo: '#groupContainer'
@@ -57,11 +57,10 @@ class @CardSort
       @groupContainer.find('.group').find('.items').droppable 'destroy'
 
     @groupContainer.find('.group').find('.items').droppable
+      accept: "*"
       drop: (event, ui) =>
         ui.draggable.appendTo event.target
-
         @checkCardContainerStock()
-
         return
       greedy: true
       tolerance: "pointer"

@@ -86,7 +86,7 @@ html, body {
   }
 
   .group {
-    height: 100%;
+    height: 50%;
     width: 45%;
     border: 1px solid #333;
     border-radius: 5px;
@@ -118,6 +118,10 @@ html, body {
       flex-wrap: wrap;
       justify-content: space-around;
       overflow: auto;
+
+      .card {
+        width: 45%;
+      }
     }
   }
   
