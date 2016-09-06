@@ -69,7 +69,7 @@ class @CardSort
 
   addGroup: ->
     group = $('<div >', {'class': 'group'})
-    label = $('<div >', {'class': 'label'}).append('<i class="fa fa-arrows ui-draggable-handle">&nbsp;</i><span contentEditable>Click here to edit title</span>')
+    label = $('<div >', {'class': 'label'}).append('<i class="fa fa-arrows ui-draggable-handle">&nbsp;</i><span contentEditable>Label&nbsp;<i class="fa fa-pencil"></i></span>&nbsp;<i class="deleteGroup fa fa-remove"></i>')
     items = $('<div >', {'class': 'items'})
     group.append label
     group.append items

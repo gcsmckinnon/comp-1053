@@ -16,6 +16,19 @@ $(document).on 'turbolinks:load', ->
     $('#addGroup').on 'click', () ->
       cardsort.addGroup()
 
+    $('#groupContainer').on 'click', '.deleteGroup', () ->
+      $(this).parent().parent().find('.card').appendTo '#cardContainer'
+      $(this).parent().parent().remove()
+      return
+
+    $('#groupContainer').on 'click', '.editable', () ->
+      $(this).text('')
+      return
+    $('#groupContainer').on 'blur', '.editable', () ->
+      if $(this).text() == ''
+        $(this).html('Label&nbsp;<i class="fa fa-pencil"></i>')
+      return
+
     $('input[name=commit]').on 'click', (e) ->
       e.preventDefault()
       results = cardsort.getResults()
