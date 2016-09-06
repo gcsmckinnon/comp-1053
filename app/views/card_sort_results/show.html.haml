@@ -1,12 +1,9 @@
 %p#notice= notice
 
-%p
-  %b Card sort:
-  = @card_sort_result.card_sort_id
-%p
-  %b Result:
-  = @card_sort_result.result
+%h1.page-header
+  = @card_sort_result.card_sort.name
+  %small
+    &nbsp;&mdash;&nbsp;
+    Results
 
-= link_to 'Edit', edit_card_sort_result_path(@card_sort_result)
-\|
-= link_to 'Back', card_sort_results_path
+= @card_sort_result.pretty

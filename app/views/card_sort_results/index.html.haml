@@ -4,14 +4,13 @@
   %thead
     %tr
       %th Card Sort
-      %th Result
+      %th Candidates
       %th
       %th
 
   %tbody
     - @card_sort_results.each do |card_sort_result|
       %tr
-        %td= card_sort_result.card_sort.name
-        %td= card_sort_result.result
-        %td= link_to 'Edit', edit_card_sort_result_path(card_sort_result)
-        %td= link_to 'Destroy', card_sort_result, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to card_sort_result.card_sort.name, card_sort_result
+        %td
+          = card_sort_result.card_sort_candidates.join ", "
