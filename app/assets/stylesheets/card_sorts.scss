@@ -86,24 +86,13 @@ html, body {
   }
 
   .group {
-    // height: 50%;
-    // min-width: 200px;
-    max-width: 33%;
-    min-width: 30%;
-    max-height: 50%;
+    height: 50%;
+    min-width: 200px;
+    max-width: 45%;
     border: 1px solid #333;
     border-radius: 5px;
     margin: 0 0.5em;
     margin-bottom: 1em;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0;
-    justify-content: flex-center;
-    align-content: flex-center;
-    align-items: flex-center;
     overflow: auto;
 
     .items {
