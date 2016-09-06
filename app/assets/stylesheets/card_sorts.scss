@@ -8,6 +8,10 @@ html, body {
   width: 100%;
 }
 
+#cardContainer::-webkit-scrollbar, #groupContainer::-webkit-scrollbar, .group::-webkit-scrollbar, .group > .items::-webkit-scrollbar {
+  display: none;
+}
+
 #cardSortContainer {
   display: flex;
   flex-direction: row;
@@ -40,6 +44,9 @@ html, body {
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: 0;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
     overflow: auto;
   }
 
@@ -54,6 +61,9 @@ html, body {
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: 0;
+    justify-content: flex-center;
+    align-content: flex-center;
+    align-items: flex-center;
     overflow: auto;
   }
 
@@ -65,7 +75,7 @@ html, body {
     display: table;
     border: 1px solid #333;
     border-radius: 5px;
-    margin: 1em;
+    margin: 0.5em;
     background-color: #fff;
 
     .label {
@@ -76,12 +86,25 @@ html, body {
   }
 
   .group {
-    height: 50%;
-    min-width: 200px;
+    // height: 50%;
+    // min-width: 200px;
+    max-width: 33%;
+    min-width: 30%;
+    max-height: 50%;
     border: 1px solid #333;
     border-radius: 5px;
     margin: 0 0.5em;
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    justify-content: flex-center;
+    align-content: flex-center;
+    align-items: flex-center;
+    overflow: auto;
 
     .items {
       min-height: 200px;
@@ -90,13 +113,14 @@ html, body {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: flex-start;
-
-      .card, .group {
-        // left: 0 !important;
-        // top: 0 !important;
-      }
+      overflow: auto;
     }
   }
+  
+  .group > .items > .group {
+    max-width: 100%;
+  }
+
   .group > .label {
     text-align: center;
     border-bottom: 1px solid #333;
