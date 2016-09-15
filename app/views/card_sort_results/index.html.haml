@@ -1,16 +1,18 @@
 %h1 Listing Card Sort Results
 
-%table.table.table-striped.table-condensed
-  %thead
-    %tr
-      %th Card Sort
-      %th Candidates
-      %th
-      %th
+- card_sort_results = Hash.new{ |h, k| h[k] = [] }
+- @card_sort_results.each { |csr| card_sort_results[csr.card_sort.id] << csr }
 
-  %tbody
-    - @card_sort_results.each do |card_sort_result|
-      %tr
-        %td= link_to card_sort_result.card_sort.name, card_sort_result
-        %td
-          = card_sort_result.card_sort_candidates.join ", "
+- card_sort_results.each do |key, csr|
+  .row
+    .col-xs-12
+      %a{ href: "#cs_#{key}", data: { toggle: "collapse" }, aria: { expanded: false, controls: "cs_#{key}" } }
+        = csr.first.card_sort.name
+        &nbsp;
+        %i.fa.fa-caret-down
+
+    .col-xs-12.collapse{ id: "cs_#{key}" }
+      - card_sort_results[key].each do |result|
+        .row
+          .col-xs-6
+            = link_to "Results: #{result.card_sort_candidates.join ", "}", result
