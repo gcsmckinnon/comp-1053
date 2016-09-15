@@ -1,140 +1,123 @@
-html, body {
-  height: 100%;
-  width: 100%;
-}
-
-.container {
-  height: 90%;
-  width: 100%;
-}
-
-#cardContainer::-webkit-scrollbar, #groupContainer::-webkit-scrollbar, .group::-webkit-scrollbar, .group > .items::-webkit-scrollbar {
-  display: none;
+#actions {
+  margin-top: 1em;  
 }
 
 #cardSortContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
-  height: 70%;
+  margin-top: 4em;
+  overflow: hidden;
+}
 
-  .label { // override Bootstrap Defaults
-    display: inherit;
-    padding: 0;
-    font-size: 100%;
-    font-weight: normal;
-    line-height: normal;
-    color: inherit;
-    text-align: inherit;
-    white-space: inherit;
-    vertical-align: inherit;
-    border-radius: 0;
-  }
+.card {
+  float: left;
+  padding: 2em;
+  margin: 0.25em;
+  background-color: #bdc3c7;
+  color: #7f8c8d;
+  border-radius: 1em;
+  cursor: pointer;
+  position: relative;
+}
 
-  #cardContainer {
-    height: 100%;
-    max-width: 50%;
-    border: 1px solid #ccc;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0;
-    justify-content: center;
-    align-content: flex-start;
-    align-items: flex-start;
-    overflow: auto;
-  }
+.card > .fa-clone {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
 
-  #groupContainer {
-    height: 100%;
-    width: 50%;
-    border: 1px solid #ccc;
-    display: flex;
-    padding: 0 1em;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0;
-    justify-content: space-around;
-    align-content: flex-center;
-    align-items: flex-center;
-    overflow: auto;
-  }
+.card.clone {
+  background-color: rgba(230, 126, 34,1.0);
+  color: rgba(236, 240, 241,1.0);
+}
 
-  .card {
-    height: 100px;
-    width: 150px;
-    padding: 1em;
-    overflow: hidden;
-    display: table;
-    border: 1px solid #333;
-    border-radius: 5px;
-    margin: 0.5em;
-    background-color: #fff;
+.card > .fa-clone:hover {
+  color: rgba(230, 126, 34,1.0);
+}
 
-    .label {
-      display: table-cell;
-      text-align: center;
-      vertical-align: middle;
-    }
-  }
+.card.selected {
+  background-color: #27ae60 !important;
+  color: #ecf0f1;
+}
 
-  .group {
-    height: 50%;
-    width: 45%;
-    border: 1px solid #333;
-    border-radius: 5px;
-    margin: 0 0.5em;
-    margin-bottom: 1em;
-    overflow: auto;
+.group {
+  float: left;
+  border-radius: 1em;
+  margin: 0.25em;
+}
 
-    .label {
-      position: relative;
+.group.selected {
+  box-shadow: 0 -1px 0px 2px red;
+}
 
-      .fa.fa-arrows.ui-draggable-handle {
-        position: absolute;
-        left: 0.25em;
-        top: 0.25em;
-      }
+.group > .label {
+  color: rgba(127, 140, 141,1.0);
+  background-color: rgba(52, 73, 94,1.0);
+  padding: 1em 4em;
+  border-radius: 1em 1em 0 0;
+  position: relative;
+  width: 100%;
+  min-height: 4em;
+  display: block;
+}
 
-      .deleteGroup {
-        position: absolute;
-        right: 0.25em;
-        top: 0.25em;
-      }
-    }
+.group > .label > i {
+  font-size: 1.5em;
+}
 
-    .items {
-      min-height: 200px;
-      padding: 0.5em;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      overflow: auto;
+.group > .label > i.fa-remove {
+  position: absolute;
+  left: 0.25em;
+  top: 0.25em;
+}
 
-      .card {
-        width: 45%;
-      }
-    }
-  }
-  
-  .group > .items > .group {
-    width: 100%;
-  }
+.group > .label > i.fa-remove:hover {
+  color: #c0392b;
+}
 
-  .group > .label {
-    text-align: center;
-    border-bottom: 1px solid #333;
-    width: 100%;
-    padding: 1em;
-    font-size: 1.25em;
-    font-weight: bold;
-  }
+.group > .label > i.fa-minus, .group > .label > i.fa-eye {
+  position: absolute;
+  right: 0.25em;
+  top: 0.25em;
+}
+
+.group > .label > i.fa-check {
+  position: absolute;
+  right: 0.25em;
+  bottom: 0.25em;
+}
+
+.group > .label > i.fa-check:hover {
+  color: #3498db;
+}
+
+.group > .label > i.fa-minus:hover {
+  color: #f1c40f;
+}
+
+.group > .label > i.fa-eye:hover {
+  color: #2ecc71;
+}
+
+.group > .label > i, .group > .label > span {
+  display: inline;
+}
+
+.group > .label > span {
+  font-size: 1.5em;
+  line-height: 2em;
+}
+
+.group > .label > span:hover {
+  color: #ecf0f1;
+}
+.group > .items {
+  background-color: rgba(127, 140, 141,0.5);
+  padding: 2.25em 1em;
+  min-height: 6em;
+  border-radius: 0 0 1em 1em;
+  overflow: hidden;
+}
+
+.group > .items > .card {
+  background-color: #3498db;
+  color: #ecf0f1;
 }

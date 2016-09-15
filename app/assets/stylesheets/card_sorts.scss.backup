@@ -1,0 +1,140 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 90%;
+  width: 100%;
+}
+
+#cardContainer::-webkit-scrollbar, #groupContainer::-webkit-scrollbar, .group::-webkit-scrollbar, .group > .items::-webkit-scrollbar {
+  display: none;
+}
+
+#cardSortContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  height: 70%;
+
+  .label { // override Bootstrap Defaults
+    display: inherit;
+    padding: 0;
+    font-size: 100%;
+    font-weight: normal;
+    line-height: normal;
+    color: inherit;
+    text-align: inherit;
+    white-space: inherit;
+    vertical-align: inherit;
+    border-radius: 0;
+  }
+
+  #cardContainer {
+    height: 100%;
+    max-width: 50%;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    overflow: auto;
+  }
+
+  #groupContainer {
+    height: 100%;
+    width: 50%;
+    border: 1px solid #ccc;
+    display: flex;
+    padding: 0 1em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    justify-content: space-around;
+    align-content: flex-center;
+    align-items: flex-center;
+    overflow: auto;
+  }
+
+  .card {
+    height: 100px;
+    width: 150px;
+    padding: 1em;
+    overflow: hidden;
+    display: table;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin: 0.5em;
+    background-color: #fff;
+
+    .label {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
+  .group {
+    height: 50%;
+    width: 45%;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin: 0 0.5em;
+    margin-bottom: 1em;
+    overflow: auto;
+
+    .label {
+      position: relative;
+
+      .fa.fa-arrows.ui-draggable-handle {
+        position: absolute;
+        left: 0.25em;
+        top: 0.25em;
+      }
+
+      .deleteGroup {
+        position: absolute;
+        right: 0.25em;
+        top: 0.25em;
+      }
+    }
+
+    .items {
+      min-height: 200px;
+      padding: 0.5em;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      overflow: auto;
+
+      .card {
+        width: 45%;
+      }
+    }
+  }
+  
+  .group > .items > .group {
+    width: 100%;
+  }
+
+  .group > .label {
+    text-align: center;
+    border-bottom: 1px solid #333;
+    width: 100%;
+    padding: 1em;
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+}
