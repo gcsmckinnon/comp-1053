@@ -1,0 +1,10 @@
+= simple_form_for(@qa_question) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :qa_game
+    = f.input :state
+    = f.input :question
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,21 @@
+%h1 Listing qa_games
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @qa_games.each do |qa_game|
+      %tr
+        %td= qa_game.name
+        %td= link_to 'Show', qa_game
+        %td= link_to 'Edit', edit_qa_game_path(qa_game)
+        %td= link_to 'Destroy', qa_game, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Qa game', new_qa_game_path

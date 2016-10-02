@@ -1,0 +1,9 @@
+= simple_form_for(@qa_option) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :qa_game
+    = f.input :option
+
+  .form-actions
+    = f.button :submit

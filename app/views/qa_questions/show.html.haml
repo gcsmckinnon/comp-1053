@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Qa game:
+  = @qa_question.qa_game
+%p
+  %b State:
+  = @qa_question.state
+%p
+  %b Question:
+  = @qa_question.question
+
+= link_to 'Edit', edit_qa_question_path(@qa_question)
+\|
+= link_to 'Back', qa_questions_path

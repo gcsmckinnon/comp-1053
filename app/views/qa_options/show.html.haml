@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Qa game:
+  = @qa_option.qa_game
+%p
+  %b Option:
+  = @qa_option.option
+
+= link_to 'Edit', edit_qa_option_path(@qa_option)
+\|
+= link_to 'Back', qa_options_path

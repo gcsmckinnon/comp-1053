@@ -35,6 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
 gem "haml-rails", "~> 0.9"
+gem 'enum_help'
 gem 'simple_form'
 
 group :development, :test do

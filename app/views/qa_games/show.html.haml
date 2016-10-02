@@ -1,0 +1,12 @@
+.container
+
+  %h1.page-header= @qa_game.name
+  
+  #qa-game-board{ data: { game_id: @qa_game.id } }
+    #admin-panel
+      %button#newQuestion{ type: "button" }
+        New Question
+      %button#resetBoard{ type: "button" }
+        Reset Board
+
+    =render partial: "qa_games/game_boards/#{@qa_game.layout}"

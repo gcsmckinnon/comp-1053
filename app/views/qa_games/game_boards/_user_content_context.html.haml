@@ -1,0 +1,7 @@
+#qa-current-question{ data: { question_id: 0 } }
+
+
+#qa-answer-choices
+  -@qa_game.qa_options.each do |option|
+    %button.qa-answer{ type: "button", data: { option_id: option.id } }
+      =option.option

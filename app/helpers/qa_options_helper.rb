@@ -1,0 +1,2 @@
+module QaOptionsHelper
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qa_question: one
+  qa_option: one
+  value: 1
+
+two:
+  qa_question: two
+  qa_option: two
+  value: 1

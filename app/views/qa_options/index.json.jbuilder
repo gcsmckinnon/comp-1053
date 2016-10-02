@@ -1,0 +1,1 @@
+json.array! @qa_options, partial: 'qa_options/qa_option', as: :qa_option

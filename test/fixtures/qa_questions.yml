@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qa_game: one
+  state: 
+  question: MyString
+
+two:
+  qa_game: two
+  state: 
+  question: MyString

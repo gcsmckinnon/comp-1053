@@ -1,0 +1,1 @@
+json.partial! "qa_options/qa_option", qa_option: @qa_option

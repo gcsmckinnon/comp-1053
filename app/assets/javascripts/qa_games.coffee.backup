@@ -1,0 +1,88 @@
+# $(document).on 'turbolinks:load', ->
+#   if top.location.pathname.match /qa_games\/\d+/i
+#     console.log "QA is loaded!"
+
+#     # variables
+#     gameID = $('#qa-game-board').data("game-id")
+#     questionContainer = $('#qa-current-question')
+#     currentQuestionID = 0
+
+#     # set/reset the board
+#     setGameBoard = ( gameID ) ->
+#       $.get "/setGameBoard", { game_id: gameID }, (( data ) ->
+#         if data.question
+#           questionContainer.data('data-question-id', data.id)
+#           questionContainer.text data.question
+#           toggleAnswerButton( 'on' )
+#         return
+#       ), 'json'
+
+#     # get new question
+#     getNewQuestion = ( gameID ) ->
+#       $.get "/getNewQuestion", { game_id: gameID }, (( data ) ->
+#         if data.question
+#           questionContainer.data('question-id', data.id)
+#           questionContainer.text data.question
+#           toggleAnswerButton( 'on' )
+#         else
+#           toggleAnswerButton( 'off' )
+#           questionContainer.text "Finished"
+#         return
+#       ), 'json'
+
+#     # record answer
+#     recordAnswer = ( questionID, optionID ) ->
+#       $.post "/recordAnswer", { questionID: questionID, optionID: optionID }, (( data ) ->
+#         return
+#       ), 'json'
+
+#     # get current question
+#     getCurrentQuestion = ( gameID ) ->
+#       $.get "/getCurrentQuestion", { game_id: gameID }, (( data ) ->
+#         if data.question
+#           currentQuestionID = data.id
+#           questionContainer.data('question-id', currentQuestionID)
+#           questionContainer.text data.question
+#           toggleAnswerButton( 'on' )
+#         else
+#           toggleAnswerButton( 'off' )
+#           questionContainer.text "Waiting for next game..."
+#         return
+#       ), 'json'
+
+
+#     # toggle answer button state
+#     toggleAnswerButton = ( state ) ->
+#       if state == 'off'
+#         $('.qa-answer').prop('disabled', true)
+#       else
+#         $('.qa-answer').prop('disabled', false)
+
+#     # admin bound actions
+#     $('#newQuestion').click ->
+#       getNewQuestion( gameID )
+
+
+#     $('#resetBoard').click ->
+#       setGameBoard( gameID )
+
+#     # user bound actions
+#     $('.qa-answer').click ->
+#       toggleAnswerButton('off')
+#       optionID = $(this).data('option-id')
+#       questionID = $('#qa-current-question').data('question-id')
+#       recordAnswer questionID, optionID
+#       questionContainer.text "Waiting for next question..."
+#       status = "waiting"
+
+#       sid = setInterval (()->
+#         $.get "/getCurrentQuestionID", (( data ) ->
+#           if data && data.questionID != currentQuestionID
+#             getCurrentQuestion()
+#             clearInterval(sid)
+#           else if !data
+#             clearInterval(sid)
+#         ), 'json'
+#       ), 1000 
+
+#     getCurrentQuestion()
