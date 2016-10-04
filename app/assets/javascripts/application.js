@@ -15,5 +15,6 @@
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require card_sorts
+//= require plugin.cardsort-beta.2.0.1.js
 //= require jquery_ujs
 //= require turbolinks

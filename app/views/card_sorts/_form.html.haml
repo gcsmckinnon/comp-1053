@@ -12,9 +12,17 @@
       - if f.object.cards && f.object.cards.count > 0
         %label Card Labels
         - f.object.cards.each do |card|
-          = f.input :cards, as: :string, input_html: { name: 'card_sort[cards][]', class: 'card', value: card["label"] }, label: false, wrapper: false
+          .input-group.card
+            = f.input :cards, as: :string, input_html: { name: 'card_sort[cards][]', class: 'card', value: card["label"] }, label: false, wrapper: false
+            .input-group-addon
+              %a.removeCardFromNewCardSort{ href: '#' }
+                %i.fa.fa-remove
       - else
-        = f.input :cards, as: :string, input_html: { name: 'card_sort[cards][]', class: 'card', placeholder: 'example: Tomatoes' }, label: 'Add a Card', wrapper: false
+        .input-group.card
+          = f.input :cards, as: :string, input_html: { name: 'card_sort[cards][]', placeholder: 'example: Tomatoes' }, label: false, wrapper: false
+          .input-group-addon
+            %a.removeCardFromNewCardSort{ href: '#' }
+              %i.fa.fa-remove
 
   .form-group
     %button.addCard.btn.btn-success{ type: 'button' }

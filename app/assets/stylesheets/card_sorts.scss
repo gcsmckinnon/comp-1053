@@ -1,123 +1,37 @@
-#actions {
-  margin-top: 1em;  
+.cs-card {
+  background: #ecf0f1;
 }
 
-#cardSortContainer {
-  margin-top: 4em;
-  overflow: hidden;
+.cs-card.cs-selected {
+  background: #3498db;
+  color: #fff;
 }
 
-.card {
-  float: left;
-  padding: 2em;
-  margin: 0.25em;
-  background-color: #bdc3c7;
-  color: #7f8c8d;
-  border-radius: 1em;
-  cursor: pointer;
-  position: relative;
+.cs-card.cs-cloned {
+  background: #c0392b;
+  color: #fff;
 }
 
-.card > .fa-clone {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.cs-group {
+  margin-top: 1em;
+  margin-right: 1em;
 }
 
-.card.clone {
-  background-color: rgba(230, 126, 34,1.0);
-  color: rgba(236, 240, 241,1.0);
+#cardSortContainer .cs-group {
+  width: 40%;
+
+  display: inline-block;
 }
 
-.card > .fa-clone:hover {
-  color: rgba(230, 126, 34,1.0);
+.cs-group > .cs-groupHeader {
+  background: #ccc;
 }
 
-.card.selected {
-  background-color: #27ae60 !important;
-  color: #ecf0f1;
+.cs-group.cs-selected > .cs-groupHeader {
+  background: #e67e22;
+  color: #fff;
 }
 
-.group {
-  float: left;
-  border-radius: 1em;
-  margin: 0.25em;
-}
-
-.group.selected {
-  box-shadow: 0 -1px 0px 2px red;
-}
-
-.group > .label {
-  color: rgba(127, 140, 141,1.0);
-  background-color: rgba(52, 73, 94,1.0);
-  padding: 1em 4em;
-  border-radius: 1em 1em 0 0;
-  position: relative;
-  width: 100%;
-  min-height: 4em;
-  display: block;
-}
-
-.group > .label > i {
-  font-size: 1.5em;
-}
-
-.group > .label > i.fa-remove {
-  position: absolute;
-  left: 0.25em;
-  top: 0.25em;
-}
-
-.group > .label > i.fa-remove:hover {
-  color: #c0392b;
-}
-
-.group > .label > i.fa-minus, .group > .label > i.fa-eye {
-  position: absolute;
-  right: 0.25em;
-  top: 0.25em;
-}
-
-.group > .label > i.fa-check {
-  position: absolute;
-  right: 0.25em;
-  bottom: 0.25em;
-}
-
-.group > .label > i.fa-check:hover {
-  color: #3498db;
-}
-
-.group > .label > i.fa-minus:hover {
-  color: #f1c40f;
-}
-
-.group > .label > i.fa-eye:hover {
-  color: #2ecc71;
-}
-
-.group > .label > i, .group > .label > span {
-  display: inline;
-}
-
-.group > .label > span {
-  font-size: 1.5em;
-  line-height: 2em;
-}
-
-.group > .label > span:hover {
-  color: #ecf0f1;
-}
-.group > .items {
-  background-color: rgba(127, 140, 141,0.5);
-  padding: 2.25em 1em;
-  min-height: 6em;
-  border-radius: 0 0 1em 1em;
-  overflow: hidden;
-}
-
-.group > .items > .card {
-  background-color: #3498db;
-  color: #ecf0f1;
+.cards > .input-group.card {
+  margin: 0.5em 0em;
 }

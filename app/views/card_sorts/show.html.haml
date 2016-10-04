@@ -30,39 +30,11 @@
     %button.btn.btn-danger{ type: "button", id: 'create-card-sort', disabled: true }
       Submit Card Sort Results
 
-#actions.btn-group
-  %button#setGroup.btn.btn-primary{ type: "button", disabled: true }
-    %i.fa.fa-object-group &nbsp;
-    Group
-  %button#addGroup.btn.btn-primary{ type: "button" }
-    %i.fa.fa-plus &nbsp;
-    Group
+#cardSortContainer{ data: { cards: @card_sort.cards.to_json } }
 
-#cardSortContainer
-  - @card_sort.cards.each do |card|
-    .card
-      = card["label"]
-      %i.fa.fa-clone
-
-.notification.alert.alert-info
+#notification.alert.alert-info
   %p
-    Click on the card(s) you wish to group. You can then click &nbsp;
-    %i.fa.fa-object-group 
-    &nbsp;Group to group them, or you can add a group by clicking &nbsp;
-    %i.fa.fa-plus 
-    &nbsp;Group, then clicking in the item block to add them.
-  %p
-    You can also group groups by click the check mark &nbsp;
-    %i.fa.fa-check 
-    to select the group, then click the group you wish to contain the selected group.
-  %p
-    To discard or reset cards, you can destroy the group by clicking the remove button &nbsp;
-    %i.fa.fa-remove 
-    \. The cards and groups will immediately re-add themselves to the global container and the parent group will be destroyed.
-  %p
-    In addition, you can select items inside the group and click the outside area of the screen to move the contents to there. Cloned items &nbsp;
-    %i.fa.fa-clone 
-    are immediately destroyed if their parent is destroyed or they have been attempted to be re-added to the global container.
+    Create a group. Click on the cards you wish to add to that group. Once you have the cards, click on the body of group to add them. To clone cards, click the clone button on the card to select it, then click on the body of the group. To group groups, click on the checkmark of the group, then the body of another group.
 
 
 
